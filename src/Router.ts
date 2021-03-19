@@ -936,7 +936,7 @@ export class Router extends EnhancedEventEmitter
 			throw new TypeError('if given, appData must be an object');
 
 		const internal = { ...this._internal, rtpObserverId: uuidv4() };
-		const reqData = { maxEntries, threshold, interval };
+		const reqData = { maxEntries: 8, threshold: -45, interval: 200 }; // https://github.com/wavetogether/wave/issues/316
 
 		await this._channel.request('router.createAudioLevelObserver', internal, reqData);
 
